@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 链式调用+无new实例化+event loop
+        function Person(name){
+            if(!(this instanceof Person)){
+                return new Person(name)
+            }
+            console.log(`This is ${name}`)
+        }
+        Person('li');
+        // This is li
+        // Person('li').sleep(10).eat('danner')
+        // // This is li
+        // // ...等待10ms
+        // // sleep after 10
+        // // eat danner
+        // Person('li').sleepFirst(5).eat('danner')
+        // // ...等待5ms
+        // // sleep before 5
+        // // This is li
+        // // eat danner
+        // Person('li').eat('food').eat('danner')
+        // // This is li
+        // // eat food
+        // // eat danner
+    </script>
+</body>
+</html>
