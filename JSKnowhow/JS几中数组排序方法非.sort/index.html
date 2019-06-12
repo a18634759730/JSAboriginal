@@ -1,24 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        //插入排序
-        let arr = [1,5,3,4,45,54,94,15];
-        function fastSort(array){
-            var start = 1;
-            for(var i=start;i<array.length;start++,i++){
-                for(var j=0;j<start;j++){
-                    0
+        let arr = [1, 99, 5, 52, 48, 12, 3];
+        //插入排序(升序)    
+        // function fastSort(array){
+        //     var start = 1;
+        //     for(var i=start;i<array.length;start++,i++){
+        //         for(var j=0;j<start;j++){
+        //             if(array[i] <= array[j]){// <= 升序  >=降序               
+        //                 array.splice(j,0,array[i]);
+        //                 //删除原有项
+        //                 array.splice(i+1,1);
+        //             }
+        //         }
+        //     }
+        //     return array       
+        // }
+        // console.log(fastSort(arr))
+
+        //冒泡排序
+        // function bubbelSort(array) {
+        //     //给每个为确定的位置做循环
+        //     for (var unfix = array.length - 1; unfix > 0; unfix--) {
+        //         //给进度做个记录，比未确定位置
+        //         for (var k = 0; k < unfix; k++) {
+        //             if (array[k] > array[k + 1]) {
+        //                 var temp = array[k];
+        //                 array.splice(k, 1, array[k + 1])
+        //                 array.splice(k + 1, 1, temp)
+        //             }
+        //         }
+        //     }
+        //     return array
+        // }
+        // console.log(bubbelSort(arr))
+
+        //选择排序
+        function selectSort(array){
+            //给每个插入后的未确定的范围循环，初始是从0开始
+            for(var unfixed = 0;unfixed < array.length; unfixed ++){
+                //设置当前范围的最小值和其索引
+                var min = array[unfixed];
+                var minIndex = unfixed;
+                //在该范围内选出最小值
+                for(var k = minIndex + 1;k<array.length;k++){
+                    if(min < array[k]){
+                        min = array[k];
+                        minIndex = k;
+                    }
                 }
+                //将最小值插入到unfixed，并且把它所在的原有项替换成
+                array.splice(unfixed , 0 , min);
+                array.splice(minIndex + 1 , 1);
             }
+            return array
         }
-        fastSort(arr)
+        console.log(selectSort(arr))
     </script>
 </body>
+
 </html>
